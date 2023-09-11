@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import "./db/db.js";
-import BookRouter from "./routes/bookRouter.js";
+import BookRouter from "./routes/BookRouter.js";
 //import multer from "multer";
 
 const app = express();
