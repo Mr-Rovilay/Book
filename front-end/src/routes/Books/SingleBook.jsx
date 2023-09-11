@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
 function singleBook() {
+  const serverUrl = import.meta.env.VITE_SERVER_URL;
+
   const [data, setData] = useState([]);
   const urlSlug = useParams();
-  const baseUrl = `http://localhost:8000/api/books/${urlSlug.slug}`;
+  const baseUrl = `${serverUrl}/api/books/${urlSlug.slug}`;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,7 +43,7 @@ function singleBook() {
       <div className="bookdetails">
         <div className="col-1">
           <img
-            src={`http://localhost:8000/uploads/${data?.thumbnail}`}
+            src={`${serverUrl}/uploads/${data?.thumbnail}`}
             alt={data?.title}
           />
           <Link to={`/editbook/${data.slug}`}>Edit</Link>

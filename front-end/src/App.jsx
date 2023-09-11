@@ -5,8 +5,8 @@ import SingleBook from "./routes/Books/SingleBook";
 import Footer from "./components/Footer";
 import Book from "./routes/Books/Book";
 import Header from "./components/Header";
-import CreateBook from "./routes/Books/createBook";
-import EditBook from "./routes/Books/editBook";
+import CreateBook from "./routes/Books/CreateBook";
+import EditBook from "./routes/Books/EditBook";
 
 const App = () => {
   return (

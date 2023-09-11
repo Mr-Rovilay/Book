@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 function EditBook() {
+  const serverUrl = import.meta.env.VITE_SERVER_URL;
+
   const navigate = useNavigate();
   const urlSlug = useParams();
-  const baseUrl = `http://localhost:8000/api/books/${urlSlug.slug}`;
+  const baseUrl = `${serverUrl}/api/books/${urlSlug.slug}`;
 
   const [bookId, setBookId] = useState("");
   const [title, setTitle] = useState("");
@@ -58,7 +60,7 @@ function EditBook() {
     }
 
     try {
-      const response = await fetch("http://localhost:8000/api/books", {
+      const response = await fetch(`${serverUrl}/api/books`, {
         method: "PUT",
         body: formData,
       });
@@ -90,12 +92,9 @@ function EditBook() {
     e.preventDefault();
 
     try {
-      const response = await fetch(
-        "http://localhost:8000/api/books/" + bookId,
-        {
-          method: "DELETE",
-        }
-      );
+      const response = await fetch(`${serverUrl}/api/books/` + bookId, {
+        method: "DELETE",
+      });
 
       if (response.ok) {
         navigate("/books");
@@ -129,7 +128,7 @@ function EditBook() {
               <img src={`${image}`} alt="preview image" />
             ) : (
               <img
-                src={`http://localhost:8000/uploads/${thumbnail}`}
+                src={`${serverUrl}/uploads/${thumbnail}`}
                 alt="preview image"
               />
             )}
